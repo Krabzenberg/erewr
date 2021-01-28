@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="admin-2columns-left">
+    <body>
+        <referenceContainer name="left">
+            <block class="Extensa\Careers\Block\Adminhtml\Positions\Edit\Tabs" name="careers_positions_edit_tabs"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Extensa\Careers\Block\Adminhtml\Positions\Edit" name="careers_positions_edit"/>
+        </referenceContainer>
+    </body>
+</page>

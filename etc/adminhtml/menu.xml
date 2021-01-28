@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="Extensa::core" title="Careers" module="Extensa_Careers" sortOrder="9999"
+                resource="Magento_Backend::content"/>
+        <add id="Extensa_Careers::section"
+             title="Careers"
+             module="Extensa_Careers"
+             sortOrder="0"
+             parent="Extensa::core"
+             resource="Magento_Backend::content"/>
+        <add id="Extensa_Careers::cards"
+             title="Cards"
+             module="Extensa_Careers"
+             sortOrder="0"
+             parent="Extensa_Careers::section"
+             action="careers/cards/index"
+             resource="Extensa_Careers::cards"/>
+        <add id="Extensa_Careers::positions"
+             title="Positions"
+             module="Extensa_Careers"
+             sortOrder="0"
+             parent="Extensa_Careers::section"
+             action="careers/positions/index"
+             resource="Extensa_Careers::positions"/>
+        <add id="Extensa_Careers::subscribers"
+             title="Subscribers"
+             module="Extensa_Careers"
+             sortOrder="0"
+             parent="Extensa_Careers::section"
+             action="careers/subscribers/index"
+             resource="Extensa_Careers::subscribers"/>
+    </menu>
+</config>

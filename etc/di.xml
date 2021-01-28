@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="careers_cards_listing_data_source" xsi:type="string">
+                    Extensa\Careers\Model\ResourceModel\Cards\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Extensa\Careers\Model\ResourceModel\Cards\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">extensa_careers_card</argument>
+            <argument name="resourceModel" xsi:type="string">Extensa\Careers\Model\ResourceModel\Cards</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="careers_positions_listing_data_source" xsi:type="string">
+                    Extensa\Careers\Model\ResourceModel\Positions\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Extensa\Careers\Model\ResourceModel\Positions\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">extensa_careers_position</argument>
+            <argument name="resourceModel" xsi:type="string">Extensa\Careers\Model\ResourceModel\Positions</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="careers_subscribers_listing_data_source" xsi:type="string">
+                    Extensa\Careers\Model\ResourceModel\Subscribers\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Extensa\Careers\Model\ResourceModel\Subscribers\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">extensa_careers_subscriber</argument>
+            <argument name="resourceModel" xsi:type="string">Extensa\Careers\Model\ResourceModel\Subscribers</argument>
+        </arguments>
+    </virtualType>
+</config>

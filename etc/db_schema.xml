@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="extensa_careers_card" resource="default" engine="innodb" comment="Staff cards">
+        <column xsi:type="int" name="card_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Staff card Id"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Staff name"/>
+        <column xsi:type="varchar" name="position" nullable="false" length="255" comment="'Staff position"/>
+        <column xsi:type="varchar" name="favorite_products" nullable="false" length="255"
+                comment="Favorite Products"/>
+        <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Staff Description"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="255" comment="Staff picture"/>
+        <column xsi:type="int" name="sort_order" padding="10" unsigned="true" nullable="false"
+                comment="Staff sort order"/>
+        <column xsi:type="boolean" name="status" nullable="false" comment="Status"/>
+        <index referenceId="EXTENSA_CAREERS_CARD_ID" indexType="btree">
+            <column name="sort_order"/>
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="card_id"/>
+        </constraint>
+    </table>
+
+    <table name="extensa_careers_position" resource="default" engine="innodb" comment="Positions">
+        <column xsi:type="int" name="position_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Position Id"/>
+        <column xsi:type="varchar" name="position_name" nullable="false" length="255" comment="Position name"/>
+        <column xsi:type="varchar" name="object_name" nullable="false" length="255" comment="Object name"/>
+        <column xsi:type="varchar" name="short_description" nullable="false" length="255"
+                comment="Short Position Description"/>
+        <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Position Description"/>
+        <column xsi:type="boolean" name="status" nullable="false" comment="Status"/>
+        <index referenceId="EXTENSA_CAREERS_POSITION_ID" indexType="btree">
+            <column name="status"/>
+        </index>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="position_id"/>
+        </constraint>
+    </table>
+
+    <table name="extensa_careers_subscriber" resource="default" engine="innodb" comment="Subscribers">
+        <column xsi:type="int" name="subscriber_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Subscriber Id"/>
+        <column xsi:type="varchar" name="email" nullable="false" length="255" comment="Subscriber email"/>
+        <column xsi:type="varchar" name="city" nullable="false" length="255" comment="Subscriber city"/>
+        <column xsi:type="varchar" name="object" nullable="false" length="255"
+                comment="Subscriber object"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="subscriber_id"/>
+        </constraint>
+    </table>
+</schema>
+
+
+
+
+
+
+
+

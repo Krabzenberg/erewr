@@ -1,0 +1,47 @@
+{
+    "extensa_careers_card": {
+        "column": {
+            "card_id": true,
+            "name": true,
+            "position": true,
+            "favorite_products": true,
+            "description": true,
+            "image": true,
+            "sort_order": true,
+            "status": true
+        },
+        "index": {
+            "EXTENSA_CAREERS_CARD_SORT_ORDER": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "extensa_careers_position": {
+        "column": {
+            "position_id": true,
+            "position_name": true,
+            "object_name": true,
+            "short_description": true,
+            "description": true,
+            "status": true
+        },
+        "index": {
+            "EXTENSA_CAREERS_POSITION_STATUS": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "extensa_careers_subscriber": {
+        "column": {
+            "subscriber_id": true,
+            "email": true,
+            "city": true,
+            "object": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

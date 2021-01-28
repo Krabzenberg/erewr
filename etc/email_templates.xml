@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="extensa_careers_settings_email_template_application_cv" label="Default all the Email template for CV"
+              file="careersemailapplication_cv.html"
+              type="html" module="Extensa_Careers" area="frontend"/>
+    <template id="extensa_careers_settings_email_template_application_form" label="Default all the Email template for Form"
+              file="default_emailtemplate.html"
+              type="html" module="Extensa_Careers" area="frontend"/>
+    <template id="extensa_careers_settings_email_template_subscriber" label="Default all the Email template for Subscriber"
+              file="careerssubscriberemail.html"
+              type="html" module="Extensa_Careers" area="frontend"/>
+</config>
+

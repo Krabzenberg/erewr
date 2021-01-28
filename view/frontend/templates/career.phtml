@@ -1,0 +1,151 @@
+<?php
+$positions = $block->getPositionsCollection();
+$cards = $block->getCardsCollection();
+$title = $block->getTitle();
+
+?>
+
+<div class="page-top-content">
+    <?= $block->getLayout()->createBlock(\Magento\Cms\Block\Block::class)->setBlockId('career-block')->toHtml(); ?>
+    <div class="page-title-wrapper">
+        <h1 class="page-title">
+            <span><?= $title ? $block->escapeHtml(__($title)) : $block->escapeHtml(__('Careers Page')) ?></span>
+        </h1>
+    </div>
+</div>
+
+<h2><span><?= $block->escapeHtml(__('Subscribe')) ?></span></h2>
+<form method="post" enctype="multipart/form-data" id="gform" class="form"
+      action="<?= $block->escapeUrl($block->getFormAction()) ?>"
+      data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <div class="fields">
+            <div class="field email required">
+                <label class="label" for="email"><span><?= $block->escapeHtmlAttr('Email') ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" title="<?= $block->escapeHtmlAttr('Email') ?>" class="input-text"
+                           type="email"
+                           data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field city required">
+                <label class="label" for="city"><span><?= $block->escapeHtmlAttr('City') ?></span></label>
+                <div class="control">
+                    <input name="city" id="city" title="<?= $block->escapeHtmlAttr('City') ?>" class="input-text"
+                           type="text"
+                           data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field object required">
+                <label class="label" for="object"><span><?= $block->escapeHtmlAttr('Object') ?></span></label>
+                <div class="control">
+                    <input name="object" id="object" title="<?= $block->escapeHtmlAttr('Object') ?>" class="input-text"
+                           type="text"
+                           data-validate="{required:true}"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <input type="hidden" name="hideit" id="hideit" value=""/>
+            <button type="submit" title="<?= $block->escapeHtmlAttr($block->escapeHtmlAttr('Submit')) ?>"
+                    class="action submit primary">
+                <span><?= $block->escapeHtml($block->escapeHtmlAttr('Submit')) ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<div id="positionslist" class="careers-list">
+    <h2><span>Active positions</span></h2>
+    <table>
+        <thead>
+        <tr>
+            <th class="col name">Position name</th>
+            <th class="col object-name">Object name</th>
+            <th class="col short-description">Short Description</th>
+            <th class="col description">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div id="pagination-container"></div>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert',
+        'mage/translate',
+        'pagination'
+    ], function ($, alertModal) {
+
+        var positionsPaginationContainer = $("#pagination-container");
+        var positionsContainer = $("#positionslist tbody");
+        var positionsList = <?= json_encode($positions->getData()); ?>;
+
+        var getPositionsContentHtml = function (list) {
+            var html = '';
+            $.each(list, function (index, item) {
+                var itemhtml = '<tr>\n' +
+                    '                <td class="col name">' + item.position_name + '</td>\n' +
+                    '                <td class="col object-name">' + item.object_name + '</td>\n' +
+                    '                <td class="col short-description">' + item.short_description + '</td>\n' +
+                    '                <td class="col description">' + item.description + '</td>\n' +
+                    '            </tr>';
+                html += itemhtml;
+            })
+            return html;
+        }
+
+        positionsPaginationContainer.pagination({
+            pageSize: 3,
+            dataSource: positionsList,
+            callback: function (data, pagination) {
+                positionsContainer.html(getPositionsContentHtml(data));
+            }
+        })
+    });
+</script>
+
+
+<div id="cardslist" class="careers-list">
+    <h2><span>Career Cards</span></h2>
+    <table>
+        <thead>
+        <tr>
+            <th class="col image">Image</th>
+            <th class="col card-name">Card name</th>
+            <th class="col position">Position</th>
+            <th class="col description">Description</th>
+            <th scope="col" class="col actions">Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($cards as $card): ?>
+            <tr>
+                <td class="col image">
+                    <a href="<?= $block->escapeHtml($card->getData('url')); ?>">
+                        <img src="<?= $block->escapeHtml($card->getImageUrl()); ?>"/>
+                    </a>
+                </td>
+                <td class="col name"><?= $block->escapeHtml($card->getName()); ?></td>
+                <td class="col position"><?= $block->escapeHtml($card->getPosition()); ?></td>
+                <td class="col description"><?= nl2br($card->getDescription()); ?></td>
+                <td data-th="Actions" class="col actions">
+                    <a href="<?= $block->escapeHtml($block->getBaseUrl() . 'careers/card/view/id/' . $card->getId()); ?>"
+                       class="button primary action view">
+                        <span>View</span>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+
+
